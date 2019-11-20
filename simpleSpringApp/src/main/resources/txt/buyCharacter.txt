@@ -1,0 +1,4 @@
+Please choose an account name:
+Please choose an account password:
+Choose a name for your character:
+Choose a character class: Wizard or Warrior

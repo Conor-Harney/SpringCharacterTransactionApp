@@ -1,0 +1,8 @@
+com\conorharney\simpleSpringApp\readers\FileReader.class
+com\conorharney\simpleSpringApp\account\AccountManager.class
+com\conorharney\simpleSpringApp\App.class
+com\conorharney\simpleSpringApp\character\Person.class
+com\conorharney\simpleSpringApp\character\Wizard.class
+com\conorharney\simpleSpringApp\configs\AppConfig.class
+com\conorharney\simpleSpringApp\character\Warrior.class
+com\conorharney\simpleSpringApp\account\Account.class

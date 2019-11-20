@@ -1,0 +1,2 @@
+Please choose an account name:
+Please choose an account password:

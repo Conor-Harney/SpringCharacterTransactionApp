@@ -1,0 +1,4 @@
+Please choose an account name:
+Please choose an account password:
+Choose an amount to top up €:
+Account toped up from linked transaction details

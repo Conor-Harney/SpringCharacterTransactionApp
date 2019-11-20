@@ -1,0 +1,8 @@
+
+Choose from the options below by typing the command phrase:
+Exit            : exit the application
+Create account  : add a new account
+List characters : list all the characters on an account
+Buy             : choose an item to buy for your account
+Topup           : Add money to your account
+Help            : display this message
