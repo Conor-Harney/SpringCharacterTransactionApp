@@ -89,6 +89,7 @@ public class App
     	String accountName = m_scanner.nextLine().replaceAll("\\s", "");	
     	System.out.println(lines.get(1));
     	String accountPassword = m_scanner.nextLine().replaceAll("\\s", "");
+    	context.getBean(AccountManager.class).listAccountsCharacters(accountName, accountPassword);
     }
     
     private static void topUp()

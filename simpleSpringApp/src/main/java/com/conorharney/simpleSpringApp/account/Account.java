@@ -57,7 +57,7 @@ public class Account {
 		System.out.println("Characters:");
 		for(Person person: playerCharacters)
 		{
-			System.out.println(person.getClass().toString() +  person.getName());
+			System.out.println(person.getClass().getSimpleName() + " - " + person.getName());
 		}
 	}
 	
