@@ -1,8 +1,10 @@
 package com.conorharney.simpleSpringApp.account;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.conorharney.simpleSpringApp.character.Person;
@@ -13,27 +15,33 @@ public class AccountManager {
 	static int nextId = 0;
 	static Map<String, Account> accountNames = new  HashMap<String, Account>();
 	
-	public static void createAccount(String accountName, String accountPassword)
+	public static Account createAccount(String accountName, String accountPassword, ApplicationContext context)
 	{
+		Account account = null;
 		if(!accountNames.containsKey(accountName))
 		{
-			accountNames.put(accountName, new Account(nextId, accountName, accountPassword));
+			account = context.getBean(Account.class, nextId, accountName, accountPassword);
+			accountNames.put(accountName, account);
 			nextId++;
 			System.out.println("Account created");
 		}
 		else
 			System.out.println("Account already exists");
+		
+		return account;
 	}
 	
-	public static void buyCharacter(String accountName, String accountPassword, Person characterToPurchase)
+	public static Person buyCharacter(String accountName, String accountPassword, Person characterToPurchase)
 	{
 		if(verifyAccount(accountName, accountPassword))
 		{
-			accountNames.get(accountName).buyCharacter(characterToPurchase, accountPassword);
+			return accountNames.get(accountName).buyCharacter(characterToPurchase, accountPassword);
 		}
+		else
+			return null;
 	}
 	
-	private static boolean verifyAccount(String name, String password)
+	public static boolean verifyAccount(String name, String password)
 	{
 		boolean verified = false;
 		if(!accountNames.containsKey(name))
@@ -51,12 +59,13 @@ public class AccountManager {
 		return verified;
 	}
 	
-	public static void listAccountsCharacters(String name, String password)
+	public static List<Person> listAccountsCharacters(String name, String password)
 	{
 		if(verifyAccount(name,password))
 		{
-			accountNames.get(name).listCharacters();
+			return accountNames.get(name).listCharacters();
 		}
+		else return null;
 	}
 	
 	public static void listAccounts()
@@ -65,11 +74,13 @@ public class AccountManager {
 			System.out.println(accountNames.get(currentKey).name);
 	}
 	
-	public void topUpAccount(String name, String password, double amount)
+	public double topUpAccount(String name, String password, double amount)
 	{
 		if(verifyAccount(name, password))
 		{
 			accountNames.get(name).addCurrency(amount);
+			return accountNames.get(name).getCurrency();
 		}
+		else return 0;
 	}
 }

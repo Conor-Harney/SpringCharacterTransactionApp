@@ -31,9 +31,9 @@ public class Account {
 		return this.password.equals(password);
 	}
 	
-	public boolean buyCharacter(Person character, String password)
+	public Person buyCharacter(Person character, String password)
 	{
-		boolean itemPurchased = false;
+		Person characterToReturn =null;
 		if(!checkPassword(password))
 		{
 			System.out.println("Invalid details");
@@ -46,19 +46,20 @@ public class Account {
 		{
 			playerCharacters.add(character);
 			this.currency -= character.getPrice();
-			itemPurchased = true;
+			characterToReturn = character;
 			System.out.println(character.getClass().getSimpleName() + " " + character.getName() + " has been added to your account!");
 		}
-		return itemPurchased;
+		return characterToReturn;
 	}
 	
-	public void listCharacters()
+	public List<Person> listCharacters()
 	{
 		System.out.println("Characters:");
 		for(Person person: playerCharacters)
 		{
 			System.out.println(person.getClass().toString() +  person.getName());
 		}
+		return playerCharacters;
 	}
 	
 	public void addCurrency(double currency)
