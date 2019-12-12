@@ -64,7 +64,7 @@ public class App
     	
     }
     
-    private static void help()
+    public static void help()
     {
     	for (String line : FileReader.getInstance().getAllLines("txt/", "options.txt"))
     	{
@@ -72,17 +72,17 @@ public class App
     	}
     }
     
-    private static void createAccount()
+    public static void createAccount()
     {
     	List<String> lines = FileReader.getInstance().getAllLines("txt/", "createAccount.txt");
     	System.out.println(lines.get(0));
     	String accountName = m_scanner.nextLine().replaceAll("\\s", "");	
     	System.out.println(lines.get(1));
     	String accountPassword = m_scanner.nextLine().replaceAll("\\s", "");
-    	context.getBean(AccountManager.class).createAccount(accountName, accountPassword);
+    	context.getBean(AccountManager.class).createAccount(accountName, accountPassword, context);
     }
     
-    private static void listCharacters()
+    public static void listCharacters()
     {
     	List<String> lines = FileReader.getInstance().getAllLines("txt/", "listCharacters.txt");
     	System.out.println(lines.get(0));
@@ -92,7 +92,7 @@ public class App
     	context.getBean(AccountManager.class).listAccountsCharacters(accountName, accountPassword);
     }
     
-    private static void topUp()
+    public static void topUp()
     {
     	List<String> lines = FileReader.getInstance().getAllLines("txt/", "topUp.txt");
     	System.out.println(lines.get(0));
@@ -113,7 +113,7 @@ public class App
     	
     }
     
-    private static void buy()
+    public static void buy()
     {
     	List<String> lines = FileReader.getInstance().getAllLines("txt/", "buyCharacter.txt");
     	System.out.println(lines.get(0));
